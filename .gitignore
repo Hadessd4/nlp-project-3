@@ -222,31 +222,44 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
-# secrets
+# ---- secrets (never commit API keys) ----
 .env
 *.key
+.mdc_api_key
 
-# dataset: the license forbids re-sharing it, so never commit audio or the split files
+# ---- dataset: license forbids re-sharing, so never commit audio or split files ----
 cv/
-data/
-data_*/
+cv-corpus*/
 *.mp3
 *.wav
+*.flac
 *.tar.gz
+data/*
+!data/split_stats.md
+!data/split_stats.json
+data_*/
 
-# model files and training output
-outputs/
-checkpoints/
-*.pt
-*.bin
-*.safetensors
-wandb/
+# ---- predictions: keep the small .json sidecars (checkpoint, revision, RTF), ignore the .tsv ----
+preds/*.tsv
 
-# per-utterance results contain reference sentences and speaker IDs
+# ---- per-utterance results contain reference sentences and speaker IDs ----
 results/utt/
 
-# python / notebooks
+# ---- models and training output ----
+outputs/
+checkpoints/
+wandb/
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.ckpt
+*.nemo
+
+# ---- python / notebooks / OS ----
 __pycache__/
-.ipynb_checkpoints/
 *.pyc
+.ipynb_checkpoints/
 .venv/
+venv/
+.DS_Store
