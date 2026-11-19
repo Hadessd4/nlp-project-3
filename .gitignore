@@ -221,3 +221,32 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# secrets
+.env
+*.key
+
+# dataset: the license forbids re-sharing it, so never commit audio or the split files
+cv/
+data/
+data_*/
+*.mp3
+*.wav
+*.tar.gz
+
+# model files and training output
+outputs/
+checkpoints/
+*.pt
+*.bin
+*.safetensors
+wandb/
+
+# per-utterance results contain reference sentences and speaker IDs
+results/utt/
+
+# python / notebooks
+__pycache__/
+.ipynb_checkpoints/
+*.pyc
+.venv/
