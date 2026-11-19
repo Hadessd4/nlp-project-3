@@ -1,0 +1,16 @@
+# core (everyone)
+datacollective
+pandas
+jiwer
+soundfile
+librosa
+num2words
+# Whisper / wav2vec2 baselines and fine-tuning
+torch
+transformers>=4.46
+accelerate
+huggingface_hub
+# Parakeet + Canary (separate Colab session recommended, NeMo is heavy)
+# pip install "nemo_toolkit[asr]"
+# Qwen3-ASR (separate environment recommended)
+# pip install -U qwen-asr
