@@ -5,7 +5,7 @@ The license forbids re-hosting/re-sharing the dataset and identifying speakers.
 EVERY team member downloads it in their own account. Never send audio to each other.
 
 ## Run order (Colab / Kaggle recommended, so nothing big lands on your PC)
-0. `pip install -r requirements.txt datacollective`
+0. `pip install -r requirements.txt`
 1. Accept the dataset terms on the page, create an API key, then:
    `export MDC_API_KEY=your-key` (Colab: `os.environ["MDC_API_KEY"] = "your-key"`)
    `python download_data.py --out /content/cv`
@@ -33,3 +33,8 @@ EVERY team member downloads it in their own account. Never send audio to each ot
 - About 73.5% of the dataset's sentences come from Europarl (parliamentary text).
 - Report speakers, utterances, hours per split and the test/train sentence overlap (in split_stats.md).
 - Link every model card, write the exact revision, and state when a model does not support Dutch.
+
+## What to commit to GitHub
+- Commit: the .py files, README.md, requirements.txt, LICENSE, `results/baselines.csv`, `results/contribution.csv`,
+  `preds/*.json` (exact checkpoint, revision, RTF) and the split statistics (`split_stats.md` / `.json`, copied to `docs/`).
+- Do NOT commit: the dataset, mp3/wav files, `data/*.tsv`, model checkpoints, API keys (the dataset license forbids re-sharing).
