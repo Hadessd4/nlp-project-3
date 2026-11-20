@@ -1,0 +1,7 @@
+{
+  "checkpoint": "nvidia/canary-1b-v2",
+  "revision": "d455706339a6b32e1aa40f82c713a482a0c938e2",
+  "rtf": 0.0256,
+  "n_clips": 791,
+  "split_file": "data/test.tsv"
+}
