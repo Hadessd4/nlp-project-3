@@ -1,2 +1,4 @@
 system,checkpoint,revision,split,n_utts,WER_%,CER_%,RTF
 whisper-small,openai/whisper-small,973afd24965f72e36ca33b3055d56a652f456b4d,dev,833,12.82,4.09,0.7593
+w2v2-nl,jonatasgrosman/wav2vec2-large-xlsr-53-dutch,46f221381d200f7bef268309b3f02023ccf11fcc,dev,833,8.48,2.45,0.0042
+qwen06,Qwen/Qwen3-ASR-0.6B,5eb144179a02acc5e5ba31e748d22b0cf3e303b0,dev,833,10.48,3.75,0.129
