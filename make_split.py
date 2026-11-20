@@ -4,18 +4,9 @@
 Rule (from the professor): split by SPEAKER, not by clip. All clips of one speaker
 go to the same split. Common Voice has no sessions, so client_id = speaker.
 
-Two modes:
-  (default)         our own split from validated.tsv: whole speakers -> train/dev/test, fixed seed
-  --official_split  use the documented Common Voice train.tsv/dev.tsv/test.tsv, then take a
-                    small subset of whole speakers from each (script checks speaker overlap)
-
 Usage:
-  python make_split.py --cv_dir /content/cv --train_hours 15 --dev_hours 1.5 --test_hours 1.5 --seed 42 --out_dir data
-  python make_split.py --cv_dir /content/cv --official_split --out_dir data_official
-
---cv_dir can be the extraction folder itself; the script searches it for validated.tsv.
-Outputs in out_dir: train.tsv, dev.tsv, test.tsv, split_stats.json, split_stats.md
-Each TSV has: client_id, path, audio, sentence, duration_s
+  python make_split.py --cv_dir C:/cv --train_hours 8 --dev_hours 1 --test_hours 1 --seed 42 --out_dir data --copy_audio_to C:/cv_selected
+  python make_split.py --cv_dir C:/cv --official_split --out_dir data_official
 """
 import argparse
 import csv
@@ -105,9 +96,9 @@ def main():
     ap.add_argument("--tsv", default="validated.tsv")
     ap.add_argument("--official_split", action="store_true",
                     help="use Common Voice's own train/dev/test TSVs instead of our own split")
-    ap.add_argument("--train_hours", type=float, default=15)
-    ap.add_argument("--dev_hours", type=float, default=1.5)
-    ap.add_argument("--test_hours", type=float, default=1.5)
+    ap.add_argument("--train_hours", type=float, default=8.0)
+    ap.add_argument("--dev_hours", type=float, default=1.0)
+    ap.add_argument("--test_hours", type=float, default=1.0)
     ap.add_argument("--max_clips_per_speaker", type=int, default=40,
                     help="cap per speaker so a few heavy speakers do not dominate")
     ap.add_argument("--seed", type=int, default=42)

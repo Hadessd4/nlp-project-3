@@ -1,0 +1,37 @@
+{
+  "train": {
+    "speakers": 416,
+    "utterances": 6455,
+    "hours": 8.03
+  },
+  "dev": {
+    "speakers": 47,
+    "utterances": 833,
+    "hours": 1.04
+  },
+  "test": {
+    "speakers": 51,
+    "utterances": 791,
+    "hours": 1.0
+  },
+  "test_sentences_in_train_word_for_word": {
+    "count": 161,
+    "of_test_utterances": 791,
+    "percent": 20.35,
+    "dropped_from_test": false
+  },
+  "settings": {
+    "cv_dir": "C:\\Users\\Doruk\\Desktop\\DORUK\\Projects\\NLP\\cv-corpus-27.0-2026-09-11",
+    "tsv": "validated.tsv",
+    "official_split": false,
+    "train_hours": 8.0,
+    "dev_hours": 1.0,
+    "test_hours": 1.0,
+    "max_clips_per_speaker": 40,
+    "seed": 42,
+    "out_dir": "data",
+    "copy_audio_to": "C:\\Users\\Doruk\\Desktop\\DORUK\\Projects\\NLP\\cv_selected",
+    "drop_test_overlap": false
+  },
+  "split_source": "own speaker-grouped split of validated.tsv"
+}

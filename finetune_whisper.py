@@ -5,18 +5,15 @@
 - Audio is loaded on the fly (no huge feature cache on disk).
 - Only the best model is kept (save_only_model) to save disk space.
 
-Usage (Colab/Kaggle GPU):
+Usage:
   python finetune_whisper.py --train data/train.tsv --dev data/dev.tsv \
-      --out_dir outputs/whisper-small-nl --max_steps 2000
+      --out_dir outputs/whisper-small-nl --max_steps 1000
 
-Then evaluate the fine-tuned model like any other system:
-  python run_baselines.py --model whisper --checkpoint outputs/whisper-small-nl/final \
-      --split data/dev.tsv --out preds/whisper-small-ft_dev.tsv
-  python asr_eval.py --ref data/dev.tsv --pred preds/whisper-small-ft_dev.tsv \
-      --system whisper-small-finetuned --group contribution
+Low VRAM (8 GB or less): add --batch_size 4 --grad_accum 4
 """
 import argparse
 import csv
+import os
 from dataclasses import dataclass
 
 import jiwer
@@ -72,7 +69,7 @@ def main():
     ap.add_argument("--dev", required=True)
     ap.add_argument("--base", default="openai/whisper-small")
     ap.add_argument("--out_dir", default="outputs/whisper-small-nl")
-    ap.add_argument("--max_steps", type=int, default=2000)
+    ap.add_argument("--max_steps", type=int, default=1000)
     ap.add_argument("--batch_size", type=int, default=8)
     ap.add_argument("--grad_accum", type=int, default=2)
     ap.add_argument("--lr", type=float, default=1e-5)
@@ -125,7 +122,7 @@ def main():
         logging_steps=25,
         report_to="none",
         remove_unused_columns=False,
-        dataloader_num_workers=2,
+        dataloader_num_workers=0 if os.name == "nt" else 2,
         seed=args.seed,
     )
     trainer = Seq2SeqTrainer(

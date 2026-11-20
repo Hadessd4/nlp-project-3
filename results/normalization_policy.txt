@@ -1,0 +1,1 @@
+NFKC, lowercase, curly->straight apostrophes, punctuation removed (apostrophes inside words kept), whitespace collapsed, numbers left as-is (use --spell_numbers to convert digits to Dutch words)
