@@ -9,3 +9,4 @@ canary-1b-v2,nvidia/canary-1b-v2,d455706339a6b32e1aa40f82c713a482a0c938e2,test,7
 w2v2-nl,jonatasgrosman/wav2vec2-large-xlsr-53-dutch,46f221381d200f7bef268309b3f02023ccf11fcc,test,791,9.49,2.98,0.0046
 qwen06,Qwen/Qwen3-ASR-0.6B,5eb144179a02acc5e5ba31e748d22b0cf3e303b0,test,791,13.63,5.38,0.1342
 whisper-small,openai/whisper-small,973afd24965f72e36ca33b3055d56a652f456b4d,test,791,15.71,5.6,0.048
+hubert-nl,coen22/Speech-Recognition-AWO-L,358f57fa790aae826229d0ac396fb54492eb315e,dev,833,7.54,2.06,0.0154
