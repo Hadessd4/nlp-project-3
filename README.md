@@ -6,7 +6,7 @@ EVERY team member downloads it in their own account. Never send audio to each ot
 
 # Project 3: Dutch ASR (Common Voice Scripted Speech 27.0 – Dutch)
 
-Benchmarking five pretrained ASR models and fine-tuning `openai/whisper-small` on **Common Voice Scripted Speech 27.0 – Dutch**.
+Benchmarking six pretrained ASR models and fine-tuning `openai/whisper-small` on **Common Voice Scripted Speech 27.0 – Dutch**.
 
 ---
 
@@ -35,16 +35,19 @@ Benchmarking five pretrained ASR models and fine-tuning `openai/whisper-small` o
 | :--- | :--- | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
 | **`canary-1b-v2`** | Baseline | [`nvidia/canary-1b-v2`](https://huggingface.co/nvidia/canary-1b-v2) | `d455706339a6b32e1aa40f82c713a482a0c938e2` | 3.80 | 1.30 | 0.0248 | 4.74 | 1.74 | 0.0256 |
 | **`parakeet-tdt-0.6b-v3`** | Baseline | [`nvidia/parakeet-tdt-0.6b-v3`](https://huggingface.co/nvidia/parakeet-tdt-0.6b-v3) | `541d1f99c6b0c3cd0b11a95167540bb8edefd82b` | 4.23 | 1.19 | 0.0101 | 5.71 | 1.82 | 0.0106 |
+| **`hubert-nl`** | Baseline | [`coen22/Speech-Recognition-AWO-L`](https://huggingface.co/coen22/Speech-Recognition-AWO-L) | `358f57fa790aae826229d0ac396fb54492eb315e` | 7.54 | 2.06 | 0.0154 | — | — | — |
 | **`w2v2-nl`** | Baseline | [`jonatasgrosman/wav2vec2-large-xlsr-53-dutch`](https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-dutch) | `46f221381d200f7bef268309b3f02023ccf11fcc` | 8.48 | 2.45 | 0.0042 | 9.49 | 2.98 | 0.0046 |
 | **`qwen06`** | Baseline | [`Qwen/Qwen3-ASR-0.6B`](https://huggingface.co/Qwen/Qwen3-ASR-0.6B) | `5eb144179a02acc5e5ba31e748d22b0cf3e303b0` | 10.48 | 3.75 | 0.1290 | 13.63 | 5.38 | 0.1342 |
 | **`whisper-small`** | Baseline | [`openai/whisper-small`](https://huggingface.co/openai/whisper-small) | `973afd24965f72e36ca33b3055d56a652f456b4d` | 12.82 | 4.09 | 0.7593* | 15.71 | 5.60 | 0.0480 |
-| **`whisper-small-finetuned`** | **Contribution** | Local fine-tune of `openai/whisper-small` | `local checkpoint (our own fine-tuning)` | **10.59** | **3.46** | **0.0125** | **[FILL]** | **[FILL]** | **[FILL]** |
+| **`whisper-small-finetuned`** | **Contribution** | Local fine-tune of `openai/whisper-small` | `local checkpoint (our own fine-tuning)` | **10.59** | **3.46** | **0.0125** | **12.07** | **5.05** | **0.0143** |
 
 *\*`whisper-small` dev baseline ran on CPU before CUDA setup; all other runs executed on GPU.*
 
 ### Model & Report Notes
-* **Fine-Tuning Contribution:** `openai/whisper-small` was fine-tuned on our 8-hour Dutch `train.tsv` split (`max_steps=1000`, `batch_size=4`, `grad_accum=4`, `lr=1e-5`, best checkpoint selected on `dev` WER). On `dev`, fine-tuning reduced WER from **12.82% to 10.59%** (-2.23 pp / 17.4% relative reduction) and CER from **4.09% to 3.46%**.
-* **Dutch Support / HuBERT Note:** `facebook/hubert-large-ls960-ft` supports English only, and `utter-project/mHuBERT-147` is a raw SSL backbone without a Dutch CTC ASR head. Therefore, `jonatasgrosman/wav2vec2-large-xlsr-53-dutch` serves as our SSL + CTC baseline.
+* **Fine-Tuning Contribution:** `openai/whisper-small` was fine-tuned on our 8-hour Dutch `train.tsv` split (`max_steps=1000`, `batch_size=4`, `grad_accum=4`, `lr=1e-5`, best checkpoint selected on `dev` WER).
+  * **Dev set (833 clips):** WER improved from **12.82% to 10.59%** (-2.23 pp / 17.4% relative reduction); CER improved from **4.09% to 3.46%**.
+  * **Test set (791 clips):** WER improved from **15.71% to 12.07%** (-3.64 pp / 23.2% relative reduction); CER improved from **5.60% to 5.05%**.
+* **Dutch SSL + CTC Baselines:** Both `jonatasgrosman/wav2vec2-large-xlsr-53-dutch` (`w2v2-nl`) and `coen22/Speech-Recognition-AWO-L` (`hubert-nl`) were evaluated as Dutch SSL + CTC baselines.
 
 ---
 
@@ -110,3 +113,4 @@ Benchmarking five pretrained ASR models and fine-tuning `openai/whisper-small` o
 ## License
 
 Code in this repository is licensed under the MIT License (see [`LICENSE`](LICENSE)). Common Voice 27.0 and all pretrained models remain subject to their respective licenses.
+````[cite: 4, 5]
