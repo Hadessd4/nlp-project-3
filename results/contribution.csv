@@ -1,0 +1,3 @@
+system,checkpoint,revision,split,n_utts,WER_%,CER_%,RTF
+whisper-small-finetuned,outputs/whisper-small-nl/final,local checkpoint (our own fine-tuning),dev,833,10.59,3.46,0.0125
+whisper-small-finetuned,outputs/whisper-small-nl/final,local checkpoint (our own fine-tuning),test,791,12.07,5.05,0.0143
