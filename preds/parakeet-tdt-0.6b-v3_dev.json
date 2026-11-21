@@ -1,0 +1,7 @@
+{
+  "checkpoint": "nvidia/parakeet-tdt-0.6b-v3",
+  "revision": "541d1f99c6b0c3cd0b11a95167540bb8edefd82b",
+  "rtf": 0.0101,
+  "n_clips": 833,
+  "split_file": "data/dev.tsv"
+}
