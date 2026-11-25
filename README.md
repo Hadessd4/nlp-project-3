@@ -92,24 +92,6 @@ Benchmarking six pretrained ASR models and fine-tuning `openai/whisper-small` on
 
 6. **Final test evaluation (single pass, after freezing everything):**
    Rerun each system on `data/test.tsv` with `--final` passed to **both** `run_baselines.py` and `asr_eval.py`.
-
----
-
-## 5. What to Commit to GitHub
-
-* **Commit:**
-  * All `.py` scripts (`download_data.py`, `make_split.py`, `run_baselines.py`, `finetune_whisper.py`, `asr_eval.py`)
-  * `README.md`, `requirements.txt`, `LICENSE`, `.gitignore`
-  * `results/baselines.csv`, `results/contribution.csv`, `results/normalization_policy.txt`
-  * `preds/*.json` (exact checkpoint, revision, and RTF sidecars)
-  * `data/split_stats.md` and `data/split_stats.json`
-* **Do NOT commit:**
-  * The dataset (`cv/`), `.mp3`/`.wav` audio files, or `.tar.gz` archives
-  * `data/*.tsv`, `preds/*.tsv`, or `results/utt/`
-  * Model checkpoints (`outputs/`), `__pycache__/`, or API keys
-
----
-
 ## License
 
 Code in this repository is licensed under the MIT License (see [`LICENSE`](LICENSE)). Common Voice 27.0 and all pretrained models remain subject to their respective licenses.
